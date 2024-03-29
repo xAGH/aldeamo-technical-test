@@ -12,7 +12,7 @@ public class StackMapper {
         return StackModel
                 .builder()
                 .id(entity.getId())
-                .input_array(entity.getInput_array())
+                .inputArray(entity.getInputArray())
                 .build();
     }
 
@@ -22,7 +22,7 @@ public class StackMapper {
             models.add(StackModel
                     .builder()
                     .id(entity.getId())
-                    .input_array(entity.getInput_array())
+                    .inputArray(entity.getInputArray())
                     .build());
         }
         return models;
@@ -32,7 +32,7 @@ public class StackMapper {
         return StackEntity
                 .builder()
                 .id(model.getId())
-                .input_array(model.getInput_array())
+                .inputArray(model.getInputArray())
                 .build();
     }
 
@@ -42,7 +42,7 @@ public class StackMapper {
             entities.add(StackEntity
                     .builder()
                     .id(model.getId())
-                    .input_array(model.getInput_array())
+                    .inputArray(model.getInputArray())
                     .build());
         }
         return entities;

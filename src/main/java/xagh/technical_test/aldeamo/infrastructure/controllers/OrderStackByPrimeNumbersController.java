@@ -10,29 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import xagh.technical_test.aldeamo.application.ports.GetStackByIdPort;
 import xagh.technical_test.aldeamo.application.ports.OrderStackByPrimeNumbersPort;
-import xagh.technical_test.aldeamo.infrastructure.types.in.OrderStackByPrimeNumberDTO;
-import xagh.technical_test.aldeamo.infrastructure.types.out.CustomResponseBody;
+import xagh.technical_test.aldeamo.infrastructure.types.OrderStackByPrimeNumberDTO;
+import xagh.technical_test.aldeamo.infrastructure.types.CustomResponseBody;
 
 @RestController
 @RequestMapping("/api/stack")
+@AllArgsConstructor
 public class OrderStackByPrimeNumbersController {
 
     private final OrderStackByPrimeNumbersPort orderStackByPrimeNumbersPort;
     private final GetStackByIdPort getStackByIdPort;
 
-    public OrderStackByPrimeNumbersController(
-            OrderStackByPrimeNumbersPort orderStackByPrimeNumbersPort,
-            GetStackByIdPort getStackByIdPort) {
-        this.orderStackByPrimeNumbersPort = orderStackByPrimeNumbersPort;
-        this.getStackByIdPort = getStackByIdPort;
-    }
-
-    @PostMapping("/order")
+    @PostMapping(value = "/order", produces = "application/json")
     public ResponseEntity<CustomResponseBody> orderStackByPrimeNumbers(
             @Valid @RequestBody OrderStackByPrimeNumberDTO data) {
-        String stack = getStackByIdPort.invoke(data.getStackId()).getInput_array();
+        String stack = getStackByIdPort.invoke(data.getStackId()).getInputArray();
         Integer iterations = data.getIterations();
         List<Integer> result = orderStackByPrimeNumbersPort.invoke(iterations, stack);
         return ResponseEntity

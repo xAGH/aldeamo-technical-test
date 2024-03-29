@@ -2,27 +2,24 @@ package xagh.technical_test.aldeamo.infrastructure.persistence;
 
 import java.util.List;
 
-import xagh.technical_test.aldeamo.domain.exceptions.WebException;
+import lombok.AllArgsConstructor;
+import xagh.technical_test.aldeamo.domain.exceptions.StackNotFoundException;
 import xagh.technical_test.aldeamo.domain.models.StackModel;
 import xagh.technical_test.aldeamo.domain.repositories.StackRepository;
 import xagh.technical_test.aldeamo.infrastructure.annotations.PersistenceAdapter;
 import xagh.technical_test.aldeamo.infrastructure.entities.StackEntity;
 import xagh.technical_test.aldeamo.infrastructure.mappers.StackMapper;
 import xagh.technical_test.aldeamo.infrastructure.repositories.StackRepositoryAdapter;
-import xagh.technical_test.aldeamo.domain.Constants;
 
+@AllArgsConstructor
 @PersistenceAdapter
 public class StackPersistance implements StackRepository {
 
     private final StackRepositoryAdapter repository;
 
-    public StackPersistance(StackRepositoryAdapter repository) {
-        this.repository = repository;
-    }
-
+    @SuppressWarnings("null")
     @Override
     public StackModel save(StackModel model) {
-        model.setInput_array(model.getInput_array().replaceAll("\\s+", ""));
         StackEntity saved = repository.save(StackMapper.modelToEntity(model));
         return StackMapper.entityToModel(saved);
     }
@@ -32,12 +29,14 @@ public class StackPersistance implements StackRepository {
         return StackMapper.entityToModel(repository.findAll());
     }
 
+    @SuppressWarnings("null")
     @Override
     public StackModel findOne(Integer id) {
         return StackMapper.entityToModel(
-                repository.findById(id).orElseThrow(() -> new WebException(Constants.stackNotFound(id), 404)));
+                repository.findById(id).orElseThrow(() -> new StackNotFoundException(id)));
     }
 
+    @SuppressWarnings("null")
     @Override
     public StackModel update(StackModel model) {
         this.findOne(model.getId());
@@ -45,6 +44,7 @@ public class StackPersistance implements StackRepository {
         return StackMapper.entityToModel(updatedModel);
     }
 
+    @SuppressWarnings("null")
     @Override
     public StackModel delete(Integer id) {
         StackModel model = this.findOne(id);

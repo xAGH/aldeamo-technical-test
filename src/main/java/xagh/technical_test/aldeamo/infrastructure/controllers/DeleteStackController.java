@@ -7,24 +7,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.AllArgsConstructor;
 import xagh.technical_test.aldeamo.application.ports.DeleteStackPort;
 import xagh.technical_test.aldeamo.application.ports.ParseStringToIntegerPort;
 import xagh.technical_test.aldeamo.domain.models.StackModel;
-import xagh.technical_test.aldeamo.infrastructure.types.out.CustomResponseBody;
+import xagh.technical_test.aldeamo.infrastructure.types.CustomResponseBody;
 
 @RestController
 @RequestMapping("/api/stack")
+@AllArgsConstructor
 public class DeleteStackController {
 
     private final DeleteStackPort deleteStackPort;
     private final ParseStringToIntegerPort parseStringToIntegerPort;
 
-    public DeleteStackController(DeleteStackPort deleteStackPort, ParseStringToIntegerPort parseStringToIntegerPort) {
-        this.deleteStackPort = deleteStackPort;
-        this.parseStringToIntegerPort = parseStringToIntegerPort;
-    }
-
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<CustomResponseBody> deleteStack(@PathVariable("id") String id) {
         Integer idInt = parseStringToIntegerPort.invoke(id);
         StackModel deletedStack = deleteStackPort.invoke(idInt);

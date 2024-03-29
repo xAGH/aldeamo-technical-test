@@ -3,31 +3,24 @@ package xagh.technical_test.aldeamo.application.use_cases;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import xagh.technical_test.aldeamo.application.ports.GetPrimeNumbersPort;
 import xagh.technical_test.aldeamo.application.ports.OrderStackByPrimeNumbersPort;
+import xagh.technical_test.aldeamo.application.ports.ParseStringListToIntegerListPort;
 import xagh.technical_test.aldeamo.infrastructure.annotations.UseCase;
 
 @UseCase
+@AllArgsConstructor
 public class OrderStackByPrimeNumbersUseCase implements OrderStackByPrimeNumbersPort {
 
     private final GetPrimeNumbersPort getPrimeNumbersPort;
-
-    public OrderStackByPrimeNumbersUseCase(GetPrimeNumbersPort getPrimeNumbersPort) {
-        this.getPrimeNumbersPort = getPrimeNumbersPort;
-    }
-
-    private ArrayList<Integer> parseItemsToInteger(String[] items) {
-        ArrayList<Integer> numbers = new ArrayList<>();
-        for (String item : items) {
-            numbers.add(Integer.parseInt(item));
-        }
-        return numbers;
-    }
+    private final ParseStringListToIntegerListPort parseStringListToIntegerListPort;
 
     @Override
     public List<Integer> invoke(Integer iterations, String stringStack) {
         List<Integer> primeNumbers = getPrimeNumbersPort.invoke(iterations);
-        ArrayList<Integer> glassStack = parseItemsToInteger(stringStack.split(","));
+        String[] stackString = stringStack.split(",");
+        ArrayList<Integer> glassStack = parseStringListToIntegerListPort.invoke(stackString);
         ArrayList<Integer> result = new ArrayList<Integer>();
 
         for (Integer i = 0; i < iterations; i++) {

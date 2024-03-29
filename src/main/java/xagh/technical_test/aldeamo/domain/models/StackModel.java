@@ -9,5 +9,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class StackModel {
     private Integer id; // Stack id
-    private String input_array; // Numbers separated by commas that indicate stack members
+    private String inputArray; // Numbers separated by commas that indicate stack members
 }
