@@ -7,8 +7,8 @@ import lombok.AllArgsConstructor;
 import xagh.technical_test.aldeamo.application.ports.CreateInitialDataPort;
 import xagh.technical_test.aldeamo.application.ports.CreateStackPort;
 import xagh.technical_test.aldeamo.application.ports.GetAllStacksPort;
+import xagh.technical_test.aldeamo.common.annotations.UseCase;
 import xagh.technical_test.aldeamo.domain.models.StackModel;
-import xagh.technical_test.aldeamo.infrastructure.annotations.UseCase;
 
 @UseCase
 @AllArgsConstructor
@@ -17,6 +17,7 @@ public class CreateInitialDataUseCase implements CreateInitialDataPort {
     private final GetAllStacksPort getAllStacksPort;
     private final CreateStackPort createStackPort;
 
+    // Loads data into database if there is empty
     @Override
     public void createStacks() {
         List<StackModel> stacks = getAllStacksPort.invoke();

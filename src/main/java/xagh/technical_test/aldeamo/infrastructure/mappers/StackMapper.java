@@ -6,6 +6,7 @@ import java.util.List;
 import xagh.technical_test.aldeamo.domain.models.StackModel;
 import xagh.technical_test.aldeamo.infrastructure.entities.StackEntity;
 
+// Mapper is used to homologate entities and models
 public class StackMapper {
 
     public static StackModel entityToModel(StackEntity entity) {

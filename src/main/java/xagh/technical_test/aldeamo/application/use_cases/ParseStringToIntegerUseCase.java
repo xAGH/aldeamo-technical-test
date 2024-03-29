@@ -1,8 +1,8 @@
 package xagh.technical_test.aldeamo.application.use_cases;
 
 import xagh.technical_test.aldeamo.application.ports.ParseStringToIntegerPort;
+import xagh.technical_test.aldeamo.common.annotations.UseCase;
 import xagh.technical_test.aldeamo.domain.exceptions.InvalidParameterTypeException;
-import xagh.technical_test.aldeamo.infrastructure.annotations.UseCase;
 
 @UseCase
 public class ParseStringToIntegerUseCase implements ParseStringToIntegerPort {

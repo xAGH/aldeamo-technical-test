@@ -9,6 +9,7 @@ public class SpringBootWebConfig implements WebMvcConfigurer {
     @SuppressWarnings({ "deprecation", "null" })
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
-        configurer.setUseTrailingSlashMatch(true); // Habilita el uso de barra final
+        // Configuration to accept paths with and without slash (/) at the end
+        configurer.setUseTrailingSlashMatch(true);
     }
 }

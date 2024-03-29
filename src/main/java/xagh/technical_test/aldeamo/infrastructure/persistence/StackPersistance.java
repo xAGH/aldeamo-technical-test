@@ -3,14 +3,15 @@ package xagh.technical_test.aldeamo.infrastructure.persistence;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import xagh.technical_test.aldeamo.common.annotations.PersistenceAdapter;
 import xagh.technical_test.aldeamo.domain.exceptions.StackNotFoundException;
 import xagh.technical_test.aldeamo.domain.models.StackModel;
 import xagh.technical_test.aldeamo.domain.repositories.StackRepository;
-import xagh.technical_test.aldeamo.infrastructure.annotations.PersistenceAdapter;
 import xagh.technical_test.aldeamo.infrastructure.entities.StackEntity;
 import xagh.technical_test.aldeamo.infrastructure.mappers.StackMapper;
 import xagh.technical_test.aldeamo.infrastructure.repositories.StackRepositoryAdapter;
 
+// Repository implementation usign JPA
 @AllArgsConstructor
 @PersistenceAdapter
 public class StackPersistance implements StackRepository {

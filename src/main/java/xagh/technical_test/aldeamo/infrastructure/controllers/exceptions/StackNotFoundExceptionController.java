@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import xagh.technical_test.aldeamo.domain.exceptions.StackNotFoundException;
 import xagh.technical_test.aldeamo.infrastructure.types.CustomResponseBody;
 
+// Global StackNotFoundExceptionController handler
 @ControllerAdvice
 public class StackNotFoundExceptionController extends ResponseEntityExceptionHandler {
 

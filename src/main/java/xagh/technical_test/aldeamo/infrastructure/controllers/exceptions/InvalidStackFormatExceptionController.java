@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import xagh.technical_test.aldeamo.domain.exceptions.InvalidStackFormatException;
 import xagh.technical_test.aldeamo.infrastructure.types.CustomResponseBody;
 
+// Global InvalidStackFormatExceptionController handler
 @ControllerAdvice
 public class InvalidStackFormatExceptionController {
 

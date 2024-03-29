@@ -3,7 +3,7 @@ package xagh.technical_test.aldeamo.application.use_cases;
 import java.util.ArrayList;
 
 import xagh.technical_test.aldeamo.application.ports.ParseStringListToIntegerListPort;
-import xagh.technical_test.aldeamo.infrastructure.annotations.UseCase;
+import xagh.technical_test.aldeamo.common.annotations.UseCase;
 
 @UseCase
 public class ParseStringListToIntegerListUseCase implements ParseStringListToIntegerListPort {

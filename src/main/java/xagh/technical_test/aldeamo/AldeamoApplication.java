@@ -20,6 +20,8 @@ public class AldeamoApplication {
 		SpringApplication.run(AldeamoApplication.class, args);
 	}
 
+	// Application event that execute once on appication starts that validate
+	// database data.
 	@EventListener(ApplicationReadyEvent.class)
 	public void ExecuteOnceOnApplicationStarts() {
 		createInitialDataPort.createStacks();

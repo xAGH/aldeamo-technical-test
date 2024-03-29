@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xagh.technical_test.aldeamo.application.ports.GetPrimeNumbersPort;
-import xagh.technical_test.aldeamo.infrastructure.annotations.UseCase;
+import xagh.technical_test.aldeamo.common.annotations.UseCase;
 
 @UseCase
 public class GetPrimeNumbersUseCase implements GetPrimeNumbersPort {
@@ -20,6 +20,7 @@ public class GetPrimeNumbersUseCase implements GetPrimeNumbersPort {
         return true;
     }
 
+    // Generate x prime numbers, where x is the parameter sent
     @Override
     public List<Integer> invoke(Integer numberOfPrimeNumbersToGen) {
         Integer primesCounter = 0;

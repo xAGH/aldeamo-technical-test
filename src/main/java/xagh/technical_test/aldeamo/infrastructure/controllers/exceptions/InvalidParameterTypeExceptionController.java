@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import xagh.technical_test.aldeamo.domain.exceptions.InvalidParameterTypeException;
 import xagh.technical_test.aldeamo.infrastructure.types.CustomResponseBody;
 
+// Global InvalidParameterTypeException handler
 @ControllerAdvice
 public class InvalidParameterTypeExceptionController extends ResponseEntityExceptionHandler {
 

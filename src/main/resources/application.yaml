@@ -6,6 +6,7 @@ server:
 spring:
   application:
     name: aldeamo-backend
+  # JDBC configuration
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DBNAME:bartender}
     username: ${MYSQL_USER:aldeamo}
@@ -13,17 +14,25 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+    # Option to JPA to interact with the database, posible options: 
+    # - create: Creates the database on application start.
+    # - create-drop: Drops and creates the database on application start.
+    # - validate: Validate database strucure on application start.
+    # - update: Updates the database structure on application start.
+    # - none: Do nothing
+      ddl-auto: create
+# Autoconfigure spring boot initialization errors.
 logging:
   level:
     org:
       springframework:
         boot:
           autoconfigure: ERROR
+# Swagger configuration
 springdoc:
   api-docs:
     enabled: true
   swagger-ui:
     enabled: true
-    path: /doc/swagger-ui.html
-  pathsToMatch: /api/**
+    path: /doc/swagger-ui.html # Path to swagger
+  pathsToMatch: /api/** # Pats to add to swagger docs

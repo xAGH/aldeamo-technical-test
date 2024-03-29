@@ -4,9 +4,9 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import xagh.technical_test.aldeamo.application.ports.GetAllStacksPort;
+import xagh.technical_test.aldeamo.common.annotations.UseCase;
 import xagh.technical_test.aldeamo.domain.models.StackModel;
 import xagh.technical_test.aldeamo.domain.repositories.StackRepository;
-import xagh.technical_test.aldeamo.infrastructure.annotations.UseCase;
 
 @UseCase
 @AllArgsConstructor

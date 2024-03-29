@@ -4,9 +4,15 @@ services:
     image: mysql:8
     env_file:
       - .env
-    ports:
-      - "3306:3306"
+    expose:
+      - 3306
     volumes:
       - "mysql-volume:/var/lib/mysql"
+  backend:
+    image: xagh/aldeamo-technical-test
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
 volumes:
   mysql-volume:

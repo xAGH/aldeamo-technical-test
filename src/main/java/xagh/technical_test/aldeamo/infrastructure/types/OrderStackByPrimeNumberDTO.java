@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
+// Input DTO to the order process
 @Data
 public class OrderStackByPrimeNumberDTO {
 

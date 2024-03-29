@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// Entity used to relation 'arrays' table on the database usign JPA.
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
